@@ -1,8 +1,10 @@
 const Chat = require("../Database/chat");
 
-async function searchChatHistory(userId) {
+async function searchChatHistory(userId, page, limit) {
   try {
-    const chat = await Chat.find({ userId: userId });
+    const chat = await Chat.find({ userId: userId })
+        .skip((page - 1)*limit)
+      .limit(limit);;
     return chat;
   } catch (error) {
     console.error("Error retrieving chat history:", error);
@@ -13,7 +15,7 @@ async function searchChatHistory(userId) {
 //function to retrieve recent chat context(conversation) for a user to provide better responses based on recent interactions
 //creating a prompt with the recent conversation history to provide better responses based on context
 //conversation like prompt is generated.
-async function searchChatContext(userId, message) {
+async function searchChatContext(userId, message, page, limit) {
   try {
     let prompt= ""
     const chat = await Chat.find(
@@ -25,7 +27,8 @@ async function searchChatContext(userId, message) {
       },
     )
       .sort({ createdAt: 1 })
-      .limit(5);
+      .skip((page - 1)*limit)
+      .limit(limit);
 
       try{
         let validationData= await validateChatHIstory(userId)
