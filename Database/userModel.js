@@ -32,6 +32,7 @@ const user= new mongoose.Schema(userSchema,{
     strict: true
 } )
 
+//index is created on email field
 user.index({ email: 1 }, { unique: true });
 
 const User= mongoose.model("User", user)
