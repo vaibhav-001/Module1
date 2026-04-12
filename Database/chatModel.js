@@ -1,5 +1,5 @@
 const mongoose= require("mongoose")
-const connection= require("../Database/connection")
+const connection= require("./connection")
 
 mongoose.set("strictQuery", true)
 
@@ -28,6 +28,8 @@ const schema= new mongoose.Schema(chatSchema,
         strict: true
     }
 )
+
+schema.index({ userId: 1, createdAt: -1 });
 
 const Chat= mongoose.model("Chat", schema)
 
