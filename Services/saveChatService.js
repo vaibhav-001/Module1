@@ -1,4 +1,4 @@
-const Chat= require("../Database/chat")
+const Chat= require("../Database/chatModel")
 
 async function saveChatHistory(userId, message, response) {
     try{

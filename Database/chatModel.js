@@ -1,5 +1,5 @@
 const mongoose= require("mongoose")
-const connection= require("../Database/connection")
+const connection= require("./connection")
 
 mongoose.set("strictQuery", true)
 

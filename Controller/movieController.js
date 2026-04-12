@@ -1,4 +1,4 @@
-const Movie = require("../Database/movie_schema");
+const Movie = require("../Database/movieModel");
 
 //console.log("Movie schema imported successfully:", movieSchema) // Add this line to check if the schema is imported correctly
 const getMovies = async (req, res) => {
