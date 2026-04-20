@@ -3,6 +3,7 @@ const dotenv= require("dotenv")
 
 dotenv.config()
 
+//this function will handle JWT token coming form frontend and authenticate users.
 async function auth(req, res, next) {
   const token = req.headers.authorization;
   const authToken= token.split(" ")[1].trim()

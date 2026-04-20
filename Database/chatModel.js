@@ -5,8 +5,14 @@ mongoose.set("strictQuery", true)
 
 const chatSchema= {
     userId:{
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User"
+    },
+    sessionId:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Session"
     },
     message:{
         type: String,
